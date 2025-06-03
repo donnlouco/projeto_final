@@ -2,13 +2,13 @@ from biblioteca import *
 from Menu import *
 
 while True:
-    resposta = MenuPrincipal()
+    resposta = MenuPrincipal(['Participantes', 'Evento', 'Estatisticas', 'Sair'])
     if resposta == 1:
-        MenuParticipantes()
+        MenuParticipantes(['Cadastro', 'Atualizacao', 'Remocao', 'Busca', 'Voltar'])
     elif resposta == 2:
-        MenuEvento()
+        MenuEvento(['Cadastro', 'Alteracao', 'Remoca', 'Busca', 'Voltar'])
     elif resposta == 3:
-        MenuEstatisticas()
+        MenuEstatisticas(['Media de participantes por evento', 'Temas mais frequentes', 'Participantes mais ativos', 'Quantos eventos cada tema possui', 'Voltar'])
     elif resposta == 4:
         print('Voce escolheu sair do programa !!!')
         break

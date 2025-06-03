@@ -1,48 +1,49 @@
 from Util import *
+from time import sleep
 
-
-def MenuPrincipal():
+def MenuPrincipal(lista):
     LimparTela()
     Cabecalho('Menu de Navegacao')
-    print('1 - Participantes')
-    print('2 - Eventos')
-    print('3 - Estatisticas')
-    print('4 - Sair')
-    opc = lerOpcao(4)
+    cont = 1
+    for item in lista:
+        print(f'{cont} - {item}', flush=True)
+        sleep(0.5)
+        cont += 1
+    opc = lerOpcao(len(lista))
     return opc
     
     
-def MenuParticipantes():
+def MenuParticipantes(lista):
     LimparTela()
     Cabecalho('Menu dos Participantes')
-    print('1 - Cadastro')
-    print('2 - Atualizacao')
-    print('3 - Remocao')
-    print('4 - Busca')
-    print('5 - Voltar')
-    opc = lerOpcao(5)
+    cont = 1
+    for item in lista:
+        print(f'{cont} - {item}', flush=True)
+        sleep(0.5)
+        cont += 1
+    opc = lerOpcao(len(lista))
     return opc
     
 
-def MenuEvento():
+def MenuEvento(lista):
     LimparTela()
     Cabecalho('Menu de Eventos')
-    print('1 - Cadastro')
-    print('2 - Alteracao')
-    print('3 - Remocao')
-    print('4 - Busca')
-    print('5 - Voltar')
-    opc = lerOpcao(5)
+    cont = 1
+    for item in lista:
+        print(f'{cont} - {item}', flush=True)
+        sleep(0.5)
+        cont += 1
+    opc = lerOpcao(len(lista))
     return opc
     
     
-def MenuEstatisticas():
+def MenuEstatisticas(lista):
     LimparTela()
     Cabecalho('Estatisticas')
-    print('1 - Quantos Eventos Cada Tema Possui')
-    print('2 - Media de Participantes Por Tema')
-    print('3 - Temas Mais Frequentes')
-    print('4 - Participantes Mais Ativos')
-    print('5 - Voltar')
-    opc = lerOpcao(5)
+    cont = 1
+    for item in lista:
+        print(f'{cont} - {item}', flush=True)
+        sleep(0.5)
+        cont += 1
+    opc = lerOpcao(len(lista))
     return opc
