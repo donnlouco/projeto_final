@@ -25,4 +25,5 @@ def lerOpcao(lim_sup):
                 print('\033[31mVoce nao digitou uma opcao valida, tente novamente \033[m') 
         except(ValueError):
             print('\033[31mVoce nao digitou um numero, tente novamente com um NUMERO INTEIRO \033[m')
+  
         

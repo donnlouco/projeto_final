@@ -1,10 +1,13 @@
 from Util import *
+from Eventos import *
 
 
 Visitantes = {}
 
-def participantes():
+def cadastrar_participantes():
+    LimparTela()
     while True:
+        verificar_eventos()
         nome = input('Digite o NOME COMPLETO do participante: ')
         cpf = input('Digite o CPF do participante: ')
         email = input('Digite o E-MAIL do participante: ')
@@ -16,8 +19,13 @@ def participantes():
             break
         
 def listar_participantes():
+    LimparTela()
     for lista in Visitantes.items():
         print(lista)
 
-participantes()        
+
+def remover_participantes ():
+    LimparTela()
+    remove = input()
+
 
