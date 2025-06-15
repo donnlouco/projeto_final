@@ -1,15 +1,14 @@
 from Util import *
 from time import sleep
 from Participantes import *
+from Eventos import *
 
 def MenuPrincipal(lista):
     LimparTela()
     Cabecalho('Menu de Navegacao')
-    cont = 1
-    for item in lista:
-        print(f'{cont} - {item}', flush=True)
-        sleep(0.5)
-        cont += 1
+    for i, item in enumerate(lista):
+        print(f'{i} - {item}', flush=True)
+        sleep(0.1)
     opc = lerOpcao(len(lista))
     return opc
     
@@ -17,19 +16,18 @@ def MenuPrincipal(lista):
 def MenuParticipantes(lista):
     LimparTela()
     Cabecalho('Menu dos Participantes')
-    cont = 1
-    for item in lista:
-        print(f'{cont} - {item}', flush=True)
-        sleep(0.5)
-        cont += 1
+    for i, item in enumerate(lista):
+        print(f'{i} - {item}', flush=True)
+        sleep(0.1)
     opc = lerOpcao(len(lista))
-    if opc == 1:
+    if opc == 0:
         cadastrar_participantes()
-    # if opc == '2':
+    # elif opc == 1:
         
-    # if opc == '3':
+    # elif opc == 2:
         
-    # if opc == '4':
+    elif opc == 3:
+        listar_participantes()
         
     return opc
     
@@ -37,22 +35,27 @@ def MenuParticipantes(lista):
 def MenuEvento(lista):
     LimparTela()
     Cabecalho('Menu de Eventos')
-    cont = 1
-    for item in lista:
-        print(f'{cont} - {item}', flush=True)
-        sleep(0.5)
-        cont += 1
+    for i, item in enumerate(lista):
+        print(f'{i} - {item}', flush=True)
+        sleep(0.1)
     opc = lerOpcao(len(lista))
+    if opc == 0:
+        cadastrar_eventos()
+    # elif opc == 1:
+        
+    elif opc == 2:
+        remover_evento()
+        
+    # elif opc == 3:
     return opc
     
     
 def MenuEstatisticas(lista):
     LimparTela()
     Cabecalho('Estatisticas')
-    cont = 1
-    for item in lista:
-        print(f'{cont} - {item}', flush=True)
-        sleep(0.5)
-        cont += 1
+    for i, item in enumerate(lista):
+        print(f'{i} - {item}', flush=True)
+        sleep(0.1)
     opc = lerOpcao(len(lista))
     return opc
+

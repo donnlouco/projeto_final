@@ -48,8 +48,8 @@ def menu(lista):
     
 # def escolha():
 #     while True:
-#         op = input('Digite um valor ')
-#         if op == '1':
+#         op = int(input('Digite um valor '))
+#         if op == 1:
 #             add = input('Escreva o que deseja adicionar: ')
 #             lista.append(add)
 #             return op
