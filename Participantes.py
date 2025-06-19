@@ -17,9 +17,9 @@ def cpf():
 
 
 def cadastrar_participantes():
-    Visitantes = {}
     LimparTela()
     # verificar_eventos()
+    # listar EVE - TESTEEEEEEEEEEEE
     listar_eve()
     try:
         opcao = int(input('Selecione o EVENTO que deseja cadastrar o participante: '))
@@ -29,12 +29,14 @@ def cadastrar_participantes():
         return
         
     while True:
+        #
+        Visitantes = {}
         cpf_valor = cpf()
         nome = input('Digite o NOME COMPLETO do participante: ')
         email = input('Digite o E-MAIL do participante: ')
         preferencias = input('Digite os temas preferidos: ')
         numero = input('Digite um numero para contato:(COM DDD) ')
-        Visitantes = {'CPF': cpf_valor, 'Nome': nome, 'Email': email,'Contato': numero, 'Preferencias Tematicas': preferencias}
+        Visitantes[cpf_valor] = {'Nome': nome, 'Email': email,'Contato': numero, 'Preferencias Tematicas': preferencias}
         print(f'Os dados foram aceitos ')
         evento["participantes"].append(Visitantes)
         saida = input('Digite 0 se deseja parar de cadastrar: ')       
