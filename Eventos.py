@@ -3,7 +3,36 @@ from time import sleep
 from Participantes import *
 
 
-eventos = []
+eventos = [
+    {
+        'Nome': 'Python Day',
+        'Data': '01-12-2025',
+        'Tema': 'Segurança Cibernética',
+        'Local': 'São Paulo',
+        'Participantes': {}
+    },
+    {
+        'Nome': 'Tech Summit',
+        'Data': '23-10-2025',
+        'Tema': 'Transformação Digital',
+        'Local': 'Rio de Janeiro',
+        'Participantes':  {}
+    },
+    {
+        'Nome': 'Autumn Day',
+        'Data': '15-07-2025',
+        'Tema': 'Inteligência Artificial (IA) e Aprendizado de Máquina',
+        'Local': 'São Paulo',
+        'Participantes': {}
+    },
+    {
+        'Nome': 'Summer day',
+        'Data': '11-05-2025',
+        'Tema': 'Big Data e Analytics',
+        'Local': 'Rio de Janeiro',
+        'Participantes': {}
+    } 
+]
 
 
 def cadastrar_eventos():
@@ -14,11 +43,11 @@ def cadastrar_eventos():
     tema_evento = input('Digite o tema do Evento: ')
     local_evento = input('Digite o local do Evento: ')
     evento = {
-        'Nome do Evento': nome_evento,
-        'Data do Evento': data_evento,
-        'Tema do Evento': tema_evento,
-        'Local do Evento': local_evento,
-        'Participantes': []
+        'Nome': nome_evento,
+        'Data': data_evento,
+        'Tema': tema_evento,
+        'Local': local_evento,
+        'Participantes': {}
         }
     eventos.append(evento)
     LimparTela()
@@ -41,9 +70,13 @@ def remover_evento():
     
 def listar_eventos():
     for i, evento in enumerate(eventos):
-        print(f"{i} - {evento['Nome do Evento']} | Data: {evento['Data do Evento']} | Tema: {evento['Tema do Evento']} | Local: {evento['Local do Evento']} | Participantes: {len(evento['participantes'])}")
-        sair = input(f'Digite algo para voltar: ')
-
+        print(f"{i} - {evento['Nome']} | Data: {evento['Data']} | Tema: {evento['Tema']} | Local: {evento['Local']} | Participantes: {len(evento['Participantes'])}")
+        
+        
+def printar_eventos():
+    for i, evento in enumerate(eventos):
+        print(f"{i} - {evento['Nome']} | Data: {evento['Data']} | Tema: {evento['Tema']} | Local: {evento['Local']} | Participantes: {len(evento['Participantes'])}")
+        sair = input('Digite algo para SAIR: ')
 
       
 def verificar_eventos():

@@ -3,8 +3,8 @@ from time import sleep
 from Util import *
 from testes import eve
 from testes import listar_eve
-
-participantes = []
+from random import randint
+from faker import Faker
 
 def cpf():
     while True:
@@ -18,61 +18,91 @@ def cpf():
 
 def cadastrar_participantes():
     LimparTela()
-    # verificar_eventos()
-    # listar EVE - TESTEEEEEEEEEEEE
-    listar_eve()
-    try:
-        opcao = int(input('Selecione o EVENTO que deseja cadastrar o participante: '))
-        evento = eve[opcao]
-    except(IndexError, ValueError):
-        print ('\033[31mVoce nao digitou uma opcao valida, tente novamente \033[m')
-        return
-        
-    while True:
+    verificar_eventos()
+    opcao = lerOpcao((len(eventos)-1))
+    evento = eventos[opcao]
+    
+    for nome in range(5):    
+    # while True:
         #
-        Visitantes = {}
-        cpf_valor = cpf()
-        nome = input('Digite o NOME COMPLETO do participante: ')
-        email = input('Digite o E-MAIL do participante: ')
-        preferencias = input('Digite os temas preferidos: ')
-        numero = input('Digite um numero para contato:(COM DDD) ')
-        Visitantes[cpf_valor] = {'Nome': nome, 'Email': email,'Contato': numero, 'Preferencias Tematicas': preferencias}
+        # nome = input('Digite o NOME COMPLETO do participante: ')
+        # email = input('Digite o E-MAIL do participante: ')
+        # preferencias = input('Digite os temas preferidos: ')
+        cpf_valor = cpf_aleatorio()
+        nome = nome_aleatorio()
+        email = email_aleatorio()
+        preferencias = ('Tech tech')
         print(f'Os dados foram aceitos ')
-        evento["participantes"].append(Visitantes)
-        saida = input('Digite 0 se deseja parar de cadastrar: ')       
-        if saida == '0':
-            break
+        evento["Participantes"][cpf_valor] = {'Nome': nome, 'Email': email, 'Preferencias Tematicas': preferencias}
+        # saida = input('Digite 0 se deseja parar de cadastrar: ')       
+        # if saida == '0':
+        #     break
         
         
 def listar_participantes():
     LimparTela()
     Cabecalho('Lista de participantes')
-    listar_eve()
-    try:
-        opcao = int(input('Selecione o EVENTO que deseja listar os participantes: '))
-        evento = eve[opcao]
-    except(IndexError, ValueError):
-        print ('\033[31mVoce nao digitou uma opcao valida, tente novamente \033[m')
-        return opcao
+    verificar_eventos()
+    opcao = lerOpcao((len(eventos)-1))
+    evento = eventos[opcao]
         
-    print(f'Participantes do Evento{evento['nome']}')
+    print(f'Participantes do Evento{evento['Nome']}')
     
-    if not evento["participantes"]:
+    if not evento["Participantes"]:
+        LimparTela()
         print("Nenhum participante cadastrado.")
-        return
-
-    for i, pessoas in enumerate(evento['participantes']):
-        print(f"{i}. Nome: {pessoas['Nome']} | Email: {pessoas['Email']} | CPF: {pessoas['CPF']} | Preferencias tematicas: {pessoas['Preferencias Tematicas']}")
         sair = input(f'Digite algo para voltar: ')
+
+    for i, pessoas in evento['Participantes'].items():
+        print(f"CPF: {i} . Nome: {pessoas['Nome']} | Email: {pessoas['Email']} | | Preferencias tematicas: {pessoas['Preferencias Tematicas']}")
+    sair = input(f'Digite algo para voltar: ')
 
 
 def remover_participantes ():
     LimparTela()
-    remove = input()
+    Cabecalho('Remocao de Participantes')
     
     
 def verificar_cpf():
     pass   
 
 
+def busca_por_cpf():
+    LimparTela()
+    Cabecalho('Busca pelo CPF')
+    listar_eve()
+    opcao = lerOpcao(len(eventos))
+    evento = eve[opcao]
+    
+        
+    print(f'Participantes do Evento{evento['nome']}')
+    if not evento["participantes"]:
+        LimparTela()
+        print("Nenhum participante cadastrado.")
+        sair = input(f'Digite algo para voltar: ')
+    
+    for i, pessoas in evento['participantes'].items():
+        cpf()
+        usuario = cpf()
+        if usuario == i:
+            print(f"CPF: {i} . Nome: {pessoas['Nome']} | Email: {pessoas['Email']} | | Preferencias tematicas: {pessoas['Preferencias Tematicas']}")
+            sair = input(f'Digite algo para voltar: ')
 
+
+def cpf_aleatorio():
+    a = [str(randint(0, 9)) for _ in range(11)]
+    cpf = ''.join(a)
+    return cpf
+
+
+def nome_aleatorio():
+    fake = Faker()
+    nome_al = fake.name()
+    return nome_al
+
+
+def email_aleatorio():
+    fake = Faker()
+    nome_al = 'x'
+    email_al = '@gmail.com'.join(nome_al)
+    return email_al

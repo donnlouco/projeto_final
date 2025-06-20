@@ -27,7 +27,7 @@ def MenuParticipantes(lista):
     # elif opc == 2:
         
     elif opc == 3:
-        listar_participantes()
+        busca_por_cpf()
         
     return opc
     
@@ -46,7 +46,8 @@ def MenuEvento(lista):
     elif opc == 2:
         remover_evento()
         
-    # elif opc == 3:
+    elif opc == 3:
+        listar_participantes()
     return opc
     
     
