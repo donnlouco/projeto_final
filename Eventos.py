@@ -5,38 +5,50 @@ from Participantes import *
 
 eventos = [
     {
-        'Nome': 'Python Day',
-        'Data': '01-12-2025',
-        'Tema': 'Segurança Cibernética',
-        'Local': 'São Paulo',
-        'Participantes': {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}}
+        "Nome": "Python Day",
+        "Data": "01-12-2025",
+        "Tema": "Segurança Cibernética",
+        "Local": "São Paulo",
+        "Participantes": {'07610192198':
+                {'Nome': 'Vinicius henrique de souza lima',
+                 'Email': 'Vinisk8.cba@gmail.com',
+                 'Preferencias Tematicas': 'Tech'}}
     },
     {
-        'Nome': 'Tech Summit',
-        'Data': '23-10-2025',
-        'Tema': 'Transformação Digital',
-        'Local': 'Tres Lagoas',
-        'Participantes':  {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}}
+        "Nome": "Tech Summit",
+        "Data": "23-10-2025",
+        "Tema": "Transformação Digital",
+        "Local": "Tres Lagoas",
+        "Participantes":  {'07610192198':
+                {'Nome': 'Vinicius henrique de souza lima',
+                 'Email': 'Vinisk8.cba@gmail.com',
+                 'Preferencias Tematicas': 'Tech'}}
     },
     {
-        'Nome': 'Autumn Day',
-        'Data': '15-07-2025',
-        'Tema': 'Inteligência Artificial (IA) e Aprendizado de Máquina',
-        'Local': 'Campo Grande',
-        'Participantes': {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}}
+        "Nome": "Autumn Day",
+        "Data": "15-07-2025",
+        "Tema": "Inteligência Artificial (IA) e Aprendizado de Máquina",
+        "Local": "Campo Grande",
+        "Participantes": {'07610192198':
+                {'Nome': 'Vinicius henrique de souza lima',
+                 'Email': 'Vinisk8.cba@gmail.com',
+                 'Preferencias Tematicas': 'Tech'}}
     },
     {
-        'Nome': 'Summer day',
-        'Data': '11-05-2025',
-        'Tema': 'Big Data e Analytics',
-        'Local': 'Rio de Janeiro',
-        'Participantes': {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}}
+        "Nome": "Summer day",
+        "Data": "11-05-2025",
+        "Tema": "Big Data e Analytics",
+        "Local": "Rio de Janeiro",
+        "Participantes": {'07610192198':
+                {'Nome': 'Vinicius henrique de souza lima',
+                 'Email': 'Vinisk8.cba@gmail.com',
+                 'Preferencias Tematicas': 'Tech'}}
     } 
 ]
 
 
+
 def cadastrar_eventos():
-    evento = {}
     LimparTela()
     nome_evento = input('Digite o nome do Evento: ')
     data_evento = input('Digite a data do Evento: ')
@@ -61,22 +73,22 @@ def remover_evento():
     try:
         indice = int(input('Digite o NUMERO do EVENTO que deseja REMOVER: '))
         del eventos[indice]
+        print('Evento REMOVIDO com sucesso !!!')
     except(IndexError, ValueError):
         print ('\033[31mVoce nao digitou uma opcao valida, tente novamente \033[m')
-    finally:
-        print('Evento REMOVIDO com sucesso !!!')
-        sleep(4)
+    sleep(2)
 
     
 def listar_eventos():
     for i, evento in enumerate(eventos):
         print(f"{i} - {evento['Nome']} | Data: {evento['Data']} | Tema: {evento['Tema']} | Local: {evento['Local']} | Participantes: {len(evento['Participantes'])}")
+
         
         
 def printar_eventos():
     for i, evento in enumerate(eventos):
-        print(f"{i} - {evento['Nome']} | Data: {evento['Data']} | Tema: {evento['Tema']} | Local: {evento['Local']} | Participantes: {len(evento['Participantes'])}")
-        sair = input('Digite algo para SAIR: ')
+                print(f"{i} - {evento['Nome']} | Data: {evento['Data']} | Tema: {evento['Tema']} | Local: {evento['Local']} | Participantes: {len(evento['Participantes'])}")
+    sair = input(f'Digite algo para voltar: ')
 
       
 def verificar_eventos():
@@ -88,13 +100,11 @@ def verificar_eventos():
     else:
         listar_eventos()
         
-
-def escolha_evento():
-    LimparTela()
-    listar_eventos()
-    try:
-        opcao = int(input('Selecione o EVENTO que deseja cadastrar o participante: '))
-        evento = eventos[opcao]
-    except(IndexError, ValueError):
-        print ('\033[31mVoce nao digitou uma opcao valida, tente novamente \033[m')
+        
+        
+def verificar_evento(cpf, evento):
+    if cpf in evento['Participantes']:
+        print('CPF ja cadastrado!!')
+        return True
+    return False
     

@@ -10,7 +10,6 @@ def cpf():
     while True:
         cpf = input('Digite o CPF do participante (APENAS NUMEROS): ')
         if cpf.isdigit() and len(cpf) == 11:
-
             return cpf
         else:
             print('CPF INVALIDO, tente novamente')
@@ -19,7 +18,7 @@ def cpf():
 def cadastrar_participantes():
     LimparTela()
     verificar_eventos()
-    opcao = lerOpcao((len(eventos)-1))
+    opcao = lerOpcao(len(eventos)-1)
     evento = eventos[opcao]
     
     # for nome in range(5):    
@@ -45,7 +44,7 @@ def listar_participantes():
     LimparTela()
     Cabecalho('Lista de participantes')
     verificar_eventos()
-    opcao = lerOpcao((len(eventos)-1))
+    opcao = lerOpcao(len(eventos)-1)
     evento = eventos[opcao]
     LimparTela()   
     print(f'Participantes do Evento: {evento['Nome']}')
@@ -56,7 +55,7 @@ def listar_participantes():
 
     for i, pessoas in evento['Participantes'].items():
         print(f"CPF: {i} . Nome: {pessoas['Nome']} | Email: {pessoas['Email']} | | Preferencias tematicas: {pessoas['Preferencias Tematicas']}")
-    sair = input(f'Digite algo para voltar: ')
+    sair = input(f'Pressione Enter para voltar...')
 
 
 def remover_participantes ():
