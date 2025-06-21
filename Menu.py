@@ -22,9 +22,11 @@ def MenuParticipantes(lista):
     opc = lerOpcao(len(lista))
     if opc == 0:
         cadastrar_participantes()
+        
     # elif opc == 1:
         
-    # elif opc == 2:
+    elif opc == 2:
+        remover_participantes()
         
     elif opc == 3:
         busca_por_cpf()
@@ -48,6 +50,7 @@ def MenuEvento(lista):
         
     elif opc == 3:
         listar_participantes()
+        
     return opc
     
     

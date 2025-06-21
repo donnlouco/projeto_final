@@ -6,7 +6,7 @@ from Participantes import *
 while True:
     resposta = MenuPrincipal(['Participantes', 'Evento', 'Estatisticas', 'Sair'])
     if resposta == 0:
-        MenuParticipantes(['Cadastro', 'Atualizacao', 'Remocao', 'Busca de participantes', 'Voltar'])
+        MenuParticipantes(['Cadastro', 'Atualizacao do cadastro', 'Remocao', 'Busca de participantes por CPF', 'Voltar'])
     elif resposta == 1:
         MenuEvento(['Cadastro', 'Alteracao', 'Remocao', 'Listagem de participantes', 'Voltar'])
     elif resposta == 2:

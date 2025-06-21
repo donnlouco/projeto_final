@@ -9,7 +9,7 @@ from faker import Faker
 def cpf():
     while True:
         cpf = input('Digite o CPF do participante (APENAS NUMEROS): ')
-        if cpf.isdigit and len(cpf) == 11:
+        if cpf.isdigit() and len(cpf) == 11:
             print('CPF aceito!!')
             return cpf
         else:
@@ -45,7 +45,7 @@ def listar_participantes():
     verificar_eventos()
     opcao = lerOpcao((len(eventos)-1))
     evento = eventos[opcao]
-        
+    LimparTela()   
     print(f'Participantes do Evento{evento['Nome']}')
     
     if not evento["Participantes"]:
@@ -61,6 +61,26 @@ def listar_participantes():
 def remover_participantes ():
     LimparTela()
     Cabecalho('Remocao de Participantes')
+    verificar_eventos()
+    opcao = lerOpcao(len(eventos)-1)
+    evento = eventos[opcao]
+    
+    LimparTela()
+    print(f'Remover Participante do Evento: {evento['Nome']}')
+    if not evento["Participantes"]:
+        LimparTela()
+        print("Nenhum participante cadastrado.")
+        sair = input(f'Digite algo para voltar: ')
+    
+    for index, pessoas in evento['Participantes'].items():
+        try:
+            usuario = cpf()
+            if usuario == index:
+                del evento['Participantes'][usuario]
+                print('Participante deletado com SUCESSO!!')
+            return
+        except():
+            print('Nao tem Participante com esse CPF')   
     
     
 def verificar_cpf():
@@ -70,22 +90,25 @@ def verificar_cpf():
 def busca_por_cpf():
     LimparTela()
     Cabecalho('Busca pelo CPF')
-    listar_eve()
-    opcao = lerOpcao(len(eventos))
-    evento = eve[opcao]
+    verificar_eventos()
+    opcao = lerOpcao(len(eventos)-1)
+    evento = eventos[opcao]
     
-        
-    print(f'Participantes do Evento{evento['nome']}')
-    if not evento["participantes"]:
+    LimparTela()    
+    print(f'Participantes do Evento: {evento['Nome']}')
+    if not evento["Participantes"]:
         LimparTela()
         print("Nenhum participante cadastrado.")
         sair = input(f'Digite algo para voltar: ')
     
-    for i, pessoas in evento['participantes'].items():
-        cpf()
+    for i, pessoas in evento['Participantes'].items():
         usuario = cpf()
         if usuario == i:
-            print(f"CPF: {i} . Nome: {pessoas['Nome']} | Email: {pessoas['Email']} | | Preferencias tematicas: {pessoas['Preferencias Tematicas']}")
+            LimparTela()
+            print(f'CPF: {i}')
+            print(f'Nome: {pessoas['Nome']}')
+            print(f'Email: {pessoas['Email']}')
+            print(f'Preferencias tematicas: {pessoas['Preferencias Tematicas']}')
             sair = input(f'Digite algo para voltar: ')
 
 
