@@ -15,14 +15,14 @@ eventos = [
         'Nome': 'Tech Summit',
         'Data': '23-10-2025',
         'Tema': 'Transformação Digital',
-        'Local': 'Rio de Janeiro',
+        'Local': 'Tres Lagoas',
         'Participantes':  {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}}
     },
     {
         'Nome': 'Autumn Day',
         'Data': '15-07-2025',
         'Tema': 'Inteligência Artificial (IA) e Aprendizado de Máquina',
-        'Local': 'São Paulo',
+        'Local': 'Campo Grande',
         'Participantes': {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}}
     },
     {
