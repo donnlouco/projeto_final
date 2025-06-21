@@ -46,7 +46,7 @@ def listar_participantes():
     opcao = lerOpcao((len(eventos)-1))
     evento = eventos[opcao]
     LimparTela()   
-    print(f'Participantes do Evento{evento['Nome']}')
+    print(f'Participantes do Evento: {evento['Nome']}')
     
     if not evento["Participantes"]:
         LimparTela()
@@ -103,13 +103,15 @@ def busca_por_cpf():
     
     for i, pessoas in evento['Participantes'].items():
         usuario = cpf()
-        if usuario == i:
-            LimparTela()
-            print(f'CPF: {i}')
-            print(f'Nome: {pessoas['Nome']}')
-            print(f'Email: {pessoas['Email']}')
-            print(f'Preferencias tematicas: {pessoas['Preferencias Tematicas']}')
-            sair = input(f'Digite algo para voltar: ')
+        filter(lambda cpf: cpf == usuario, i)
+        # if usuario == i:
+        LimparTela()
+        print(f'CPF: {i}')
+        print(f'Nome: {pessoas['Nome']}')
+        print(f'Email: {pessoas['Email']}')
+        print(f'Preferencias tematicas: {pessoas['Preferencias Tematicas']}')
+        sair = input(f'Digite algo para voltar: ')
+        return
 
 
 def cpf_aleatorio():
