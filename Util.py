@@ -5,13 +5,13 @@ def LimparTela():
     os.system('cls')
 
 
-def Linha(tam = 40):
+def Linha(tam = 60):
     return '-' * tam
 
 
 def Cabecalho(txt):
     print(Linha())
-    print(txt.center(40))
+    print(txt.center(60))
     print(Linha())
     
 

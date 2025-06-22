@@ -9,6 +9,7 @@ from faker import Faker
 def cpf():
     while True:
         cpf = input('Digite o CPF do participante (APENAS NUMEROS): ')
+        # isdigit() verifica se os dados da string sao apenas numeros(0-9), sem espacos ou -
         if cpf.isdigit() and len(cpf) == 11:
             return cpf
         else:
@@ -21,7 +22,9 @@ def cadastrar_participantes():
     opcao = lerOpcao(len(eventos)-1)
     evento = eventos[opcao]
     
-    # for nome in range(5):    
+    # for nome in range(5):
+    LimparTela()
+    Cabecalho(f'Cadastrar participantes no Evento: {evento['Nome']}')  
     while True:
         cpf_valor = cpf()
         if verificar_cpf(cpf_valor, evento):
@@ -46,8 +49,9 @@ def listar_participantes():
     verificar_eventos()
     opcao = lerOpcao(len(eventos)-1)
     evento = eventos[opcao]
+    
     LimparTela()   
-    print(f'Participantes do Evento: {evento['Nome']}')
+    Cabecalho(f'Participantes do Evento: {evento['Nome']}')
     
     if not evento["Participantes"]:
         LimparTela()
@@ -66,7 +70,8 @@ def remover_participantes ():
     evento = eventos[opcao]
     
     LimparTela()
-    print(f'Remover Participante do Evento: {evento['Nome']}')
+    Cabecalho(f'Remover Participante do Evento: {evento['Nome']}')
+    
     if not evento["Participantes"]:
         LimparTela()
         print("Nenhum participante cadastrado.")
@@ -97,7 +102,8 @@ def busca_por_cpf():
     evento = eventos[opcao]
     
     LimparTela()    
-    print(f'Participantes do Evento: {evento['Nome']}')
+    Cabecalho(f'Participantes do Evento: {evento['Nome']}')
+    
     if not evento["Participantes"]:
         LimparTela()
         print("Nenhum participante cadastrado.")
@@ -110,8 +116,10 @@ def busca_por_cpf():
         print(f'Nome: {pessoas['Nome']}')
         print(f'Email: {pessoas['Email']}')
         print(f'Preferencias tematicas: {pessoas['Preferencias Tematicas']}')
+    else:
+        print('CPF nao encontrado... ')
 
-    sair = input(f'Digite algo para voltar: ')
+    sair = input(f'Pressione Enter para voltar...')
 
 
 def cpf_aleatorio():
@@ -131,3 +139,45 @@ def email_aleatorio():
     nome_al = 'x'
     email_al = '@gmail.com'.join(nome_al)
     return email_al
+
+
+def alteracao_dados_participantes():
+    LimparTela()
+    Cabecalho('Alteracao de Dados')
+    verificar_eventos()
+    opcao = lerOpcao(len(eventos)-1)
+    evento = eventos[opcao]
+    
+    LimparTela()    
+    Cabecalho(f'Participantes do Evento: {evento['Nome']}')
+    
+    if not evento["Participantes"]:
+        LimparTela()
+        print("Nenhum participante cadastrado.")
+
+    
+    usuario = cpf()
+    LimparTela()
+    if usuario in evento["Participantes"]:
+        pessoas = evento["Participantes"][usuario]
+        
+        for chaves, dados in pessoas.items():
+            print(f'{chaves}: {dados}')
+            
+        alterar = input(f'Qual dado deseja alterar? (Nome / Email / Preferencias Tematicas): ').upper()
+        
+        LimparTela()
+        if alterar == 'NOME':
+            pessoas['Nome'] = input('Digite o novo Nome: ')
+        elif alterar == 'EMAIL':
+            pessoas['Email'] = input('Digite o novo Email: ')
+        elif alterar == 'PREFERENCIAS TEMATICAS':
+            pessoas['Preferencias Tematicas'] = input('Digite uma nova preferencia: ')
+        else:
+            print('Opcao invalida. ')
+        print('Dados alterados com sucesso!! ')
+    else:
+        LimparTela()
+        print('CPF nao encontrado... ')
+        
+    sair = input(f'Pressione Enter para voltar...')

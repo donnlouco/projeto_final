@@ -23,7 +23,8 @@ def MenuParticipantes(lista):
     if opc == 0:
         cadastrar_participantes()
         
-    # elif opc == 1:
+    elif opc == 1:
+        alteracao_dados_participantes()
         
     elif opc == 2:
         remover_participantes()
