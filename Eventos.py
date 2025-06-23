@@ -69,14 +69,13 @@ def cadastrar_eventos():
     
 def remover_evento():
     LimparTela()
+    Cabecalho('Remover Evento')
     verificar_eventos()
-    try:
-        indice = int(input('Digite o NUMERO do EVENTO que deseja REMOVER: '))
-        del eventos[indice]
-        print('Evento REMOVIDO com sucesso !!!')
-    except(IndexError, ValueError):
-        print ('\033[31mVoce nao digitou uma opcao valida, tente novamente \033[m')
-    sleep(2)
+    opcao = lerOpcao(len(eventos)-1)
+    evento = eventos[opcao]
+    print(f'Evento {evento['Nome']} REMOVIDO com sucesso !!!')
+    del evento
+    sair = input(f'Pressione Enter para voltar...')
 
     
 def listar_eventos():
@@ -102,9 +101,46 @@ def verificar_eventos():
         
         
         
-def verificar_evento(cpf, evento):
+def casasasas(cpf, evento):
     if cpf in evento['Participantes']:
         print('CPF ja cadastrado!!')
         return True
     return False
+    
+
+def alteracao_dados_eventos():
+    LimparTela()
+    Cabecalho('Alteracao de Dados')
+    verificar_eventos()
+    opcao = lerOpcao(len(eventos)-1)
+    evento = eventos[opcao]
+    
+    LimparTela()    
+    Cabecalho(f'Alteracoes do Evento: {evento['Nome']}')
+    
+    print(f'Nome : {evento['Nome']}')
+    print(f'Data : {evento['Data']}')
+    print(f'Tema : {evento['Tema']}')
+    print(f'Local : {evento['Local']}')
+    
+    alterar = input(f'Qual dado deseja alterar? (Nome / Data / Tema / Local): ').upper()
+    
+    LimparTela()
+    if alterar == 'NOME':
+        evento['Nome'] = input('Digite o novo Nome do evento: ')
+        print('Dados Alterados com sucesso')
+    elif alterar == 'DATA':
+        evento['Data'] = input('Digite a nova Data do evento: ')
+        print('Dados Alterados com sucesso')
+    elif alterar == 'TEMA':
+        evento['Tema'] = input('Digite o novo Tema do evento: ')
+        print('Dados Alterados com sucesso')
+    elif alterar == 'LOCAL':
+        evento['Local'] = input('Digite o novo Local do evento: ')
+        print('Dados Alterados com sucesso')
+    else:
+        print('Opcao invalida. ')
+        
+
+    sair = input(f'Pressione Enter para voltar...')    
     

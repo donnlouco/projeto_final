@@ -169,13 +169,15 @@ def alteracao_dados_participantes():
         LimparTela()
         if alterar == 'NOME':
             pessoas['Nome'] = input('Digite o novo Nome: ')
+            print('Dados alterados com sucesso!! ')
         elif alterar == 'EMAIL':
             pessoas['Email'] = input('Digite o novo Email: ')
+            print('Dados alterados com sucesso!! ')
         elif alterar == 'PREFERENCIAS TEMATICAS':
             pessoas['Preferencias Tematicas'] = input('Digite uma nova preferencia: ')
+            print('Dados alterados com sucesso!! ')
         else:
             print('Opcao invalida. ')
-        print('Dados alterados com sucesso!! ')
     else:
         LimparTela()
         print('CPF nao encontrado... ')

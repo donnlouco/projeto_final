@@ -6,9 +6,11 @@ from Eventos import *
 def MenuPrincipal(lista):
     LimparTela()
     Cabecalho('Menu de Navegacao')
+    
     for i, item in enumerate(lista):
         print(f'{i} - {item}', flush=True)
         sleep(0.1)
+        
     opc = lerOpcao(len(lista))
     return opc
     
@@ -16,9 +18,11 @@ def MenuPrincipal(lista):
 def MenuParticipantes(lista):
     LimparTela()
     Cabecalho('Menu dos Participantes')
+    
     for i, item in enumerate(lista):
         print(f'{i} - {item}', flush=True)
         sleep(0.1)
+        
     opc = lerOpcao(len(lista))
     if opc == 0:
         cadastrar_participantes()
@@ -38,13 +42,16 @@ def MenuParticipantes(lista):
 def MenuEvento(lista):
     LimparTela()
     Cabecalho('Menu de Eventos')
+    
     for i, item in enumerate(lista):
         print(f'{i} - {item}', flush=True)
         sleep(0.1)
+        
     opc = lerOpcao(len(lista))
     if opc == 0:
         cadastrar_eventos()
-    # elif opc == 1:
+    elif opc == 1:
+        alteracao_dados_eventos()
         
     elif opc == 2:
         remover_evento()
@@ -58,9 +65,11 @@ def MenuEvento(lista):
 def MenuEstatisticas(lista):
     LimparTela()
     Cabecalho('Estatisticas')
+    
     for i, item in enumerate(lista):
         print(f'{i} - {item}', flush=True)
         sleep(0.1)
+        
     opc = lerOpcao(len(lista))
     return opc
 
