@@ -13,7 +13,7 @@ def participantes_mais_ativos():
             # nos adicionamos cada participante com a chave['Nome] = NOME a uma lista de nomes
             nomes.append(participantes['Nome'])
     
-    # counter serve para contar os elementos, as chaves sao os nomes e os valores sao a quantidade
+    # counter serve para armazenar e contar os elementos, as chaves sao os nomes e os valores sao a quantidade
     # most common é um método para extrair e apresentar os resultados de forma ordenada   
     mais_ativos = Counter(nomes).most_common()
     

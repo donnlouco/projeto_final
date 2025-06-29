@@ -1,12 +1,14 @@
 from Util import *
 from time import sleep
 from Participantes import *
+from datetime import date
+from datetime import datetime
 
 
 eventos = [
     {
         "Nome": "Python Day",
-        "Data": "01-12-2025",
+        "Data": date(2025, 10, 25),
         "Tema": "Segurança Cibernética",
         "Local": "São Paulo",
         "Participantes": {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}, 
@@ -14,7 +16,7 @@ eventos = [
         }, 
     {
         "Nome": "Tech Summit",
-        "Data": "23-10-2025",
+        "Data": date(2025, 6, 15),
         "Tema": "Transformação Digital",
         "Local": "Tres Lagoas",
         "Participantes": {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}, 
@@ -22,14 +24,14 @@ eventos = [
          },
     {
         "Nome": "Autumn Day",
-        "Data": "15-07-2025",
+        "Data": date(2025, 7, 17),
         "Tema": "Inteligência Artificial (IA) e Aprendizado de Máquina",
         "Local": "Campo Grande",
         "Participantes": {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}}},
     {
         "Nome": "Summer day",
-        "Data": "11-05-2025",
-        "Tema": "Big Data e Analytics",
+        "Data": date(2025, 5, 11),
+        "Tema": "Transformação Digital",
         "Local": "Rio de Janeiro",
         "Participantes": {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}}} 
 ]
@@ -39,7 +41,7 @@ eventos = [
 def cadastrar_eventos():
     LimparTela()
     nome_evento = input('Digite o nome do Evento: ')
-    data_evento = input('Digite a data do Evento: ')
+    data_evento = data()
     tema_evento = input('Digite o tema do Evento: ')
     local_evento = input('Digite o local do Evento: ')
     evento = {
@@ -125,3 +127,59 @@ def alteracao_dados_eventos():
 
     sair = input(f'Pressione Enter para voltar...')    
     
+
+def filtragem_tema():
+    LimparTela()
+    Cabecalho('Filtragem pelo Tema')
+    evento = [x['Tema'] for x in eventos]
+    print(evento)
+    tema = input('Informe o tema que deseja procurar: ').lower()
+    
+    encontrado = False
+    
+    for evento in eventos:
+        if tema in evento['Tema'].lower():
+                print('')
+                print(f'Nome: {evento['Nome']}')
+                print(f'Nome: {evento['Data']}')
+                print(f'Nome: {evento['Tema']}')
+                print(f'Nome: {evento['Local']}')
+                print('')
+                encontrado = True
+    if not encontrado:
+        print('Tema nao encontrado nos Eventos disponiveis!! ')
+        
+    sair = input(f'Pressione Enter para voltar...')  
+
+
+
+def filtragem_data():
+    LimparTela()
+    Cabecalho('Filtragem por Datas')
+    print('Escolha a Data inicial')
+    inicio = data()
+    print('Escolha a Data final')
+    final = data()
+    
+    data_min = min(inicio, final)
+    data_max = max(inicio, final)
+    
+    evento_filtrado = [x for x in eventos if data_min <= x['Data'] <= data_max]
+    # x representa cada evento da lista, x['Data'] é a chave de ordenação (a data associada ao evento).
+    evento_filtrado = sorted(evento_filtrado, key=lambda x: x['Data'])
+          
+    LimparTela()
+    if evento_filtrado:
+        for evento in evento_filtrado:
+            print(f'Nome: {evento['Nome']}, Data: {evento['Data']}, Tema: {evento['Tema']}, Local: {evento['Local']}')    
+
+    else:
+        print(f'Nao temos Eventos nessa faixa de Datas!! ')
+        
+    sair = input(f'Pressione Enter para voltar...') 
+
+
+
+def possivel_cancelamento():
+    LimparTela()
+    Cabecalho('Eventos com menos de 2 participantes')

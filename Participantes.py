@@ -78,8 +78,8 @@ def remover_participantes ():
         
     usuario = cpf()
     if usuario in evento["Participantes"]:
+        print(f'Participante {evento['Participantes'][usuario]["Nome"]} deletado com SUCESSO!!')
         del evento['Participantes'][usuario]
-        print('Participante deletado com SUCESSO!!')
     else:
         print('Nao tem Participante com esse CPF')
     sair = input(f'Pressione Enter para voltar...')
