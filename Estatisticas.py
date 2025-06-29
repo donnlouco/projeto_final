@@ -21,6 +21,8 @@ def participantes_mais_ativos():
     for nome, qntd in mais_ativos:
         if qntd >= valor:
             print(f'-- {nome}, Quantidade: {qntd}')
+        else:
+            print(f'Nao tem participantes com o valor minimo de {valor}')
     sair = input(f'Pressione Enter para voltar...')
 
 
