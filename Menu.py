@@ -2,6 +2,8 @@ from Util import *
 from time import sleep
 from Participantes import *
 from Eventos import *
+from Estatisticas import*
+
 
 def MenuPrincipal(lista):
     LimparTela()
@@ -11,7 +13,7 @@ def MenuPrincipal(lista):
         print(f'{i} - {item}', flush=True)
         sleep(0.1)
         
-    opc = lerOpcao(len(lista))
+    opc = lerOpcao(len(lista) - 1)
     return opc
     
     
@@ -23,7 +25,7 @@ def MenuParticipantes(lista):
         print(f'{i} - {item}', flush=True)
         sleep(0.1)
         
-    opc = lerOpcao(len(lista))
+    opc = lerOpcao(len(lista) - 1)
     if opc == 0:
         cadastrar_participantes()
         
@@ -47,7 +49,7 @@ def MenuEvento(lista):
         print(f'{i} - {item}', flush=True)
         sleep(0.1)
         
-    opc = lerOpcao(len(lista))
+    opc = lerOpcao(len(lista) - 1)
     if opc == 0:
         cadastrar_eventos()
     elif opc == 1:
@@ -70,6 +72,16 @@ def MenuEstatisticas(lista):
         print(f'{i} - {item}', flush=True)
         sleep(0.1)
         
-    opc = lerOpcao(len(lista))
+    opc = lerOpcao(len(lista) - 1)
+    if opc == 0:
+        pass
+    elif opc == 1:
+        temas_mais_frequentes()
+        
+    elif opc == 2:
+        participantes_mais_ativos()
+        
+    elif opc == 3:
+        listar_participantes()
+        
     return opc
-

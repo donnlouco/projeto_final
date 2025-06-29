@@ -2,6 +2,7 @@ from biblioteca import *
 from Menu import *
 from Eventos import *
 from Participantes import *
+from Estatisticas import *
 
 while True:
     resposta = MenuPrincipal(['Participantes', 'Evento', 'Estatisticas', 'Sair'])

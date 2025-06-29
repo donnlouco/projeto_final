@@ -9,41 +9,29 @@ eventos = [
         "Data": "01-12-2025",
         "Tema": "Segurança Cibernética",
         "Local": "São Paulo",
-        "Participantes": {'07610192198':
-                {'Nome': 'Vinicius henrique de souza lima',
-                 'Email': 'Vinisk8.cba@gmail.com',
-                 'Preferencias Tematicas': 'Tech'}}
-    },
+        "Participantes": {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}, 
+                          '07610192199': {'Nome': 'Eduardo de Souza lima', 'Email': 'Edusk8.cba@gmail.com', 'Preferencias Tematicas': 'seinao'}}, 
+        }, 
     {
         "Nome": "Tech Summit",
         "Data": "23-10-2025",
         "Tema": "Transformação Digital",
         "Local": "Tres Lagoas",
-        "Participantes":  {'07610192198':
-                {'Nome': 'Vinicius henrique de souza lima',
-                 'Email': 'Vinisk8.cba@gmail.com',
-                 'Preferencias Tematicas': 'Tech'}}
-    },
+        "Participantes": {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}, 
+                          '07610192199': {'Nome': 'Eduardo de Souza lima', 'Email': 'Edusk8.cba@gmail.com', 'Preferencias Tematicas': 'seinao'}},
+         },
     {
         "Nome": "Autumn Day",
         "Data": "15-07-2025",
         "Tema": "Inteligência Artificial (IA) e Aprendizado de Máquina",
         "Local": "Campo Grande",
-        "Participantes": {'07610192198':
-                {'Nome': 'Vinicius henrique de souza lima',
-                 'Email': 'Vinisk8.cba@gmail.com',
-                 'Preferencias Tematicas': 'Tech'}}
-    },
+        "Participantes": {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}}},
     {
         "Nome": "Summer day",
         "Data": "11-05-2025",
         "Tema": "Big Data e Analytics",
         "Local": "Rio de Janeiro",
-        "Participantes": {'07610192198':
-                {'Nome': 'Vinicius henrique de souza lima',
-                 'Email': 'Vinisk8.cba@gmail.com',
-                 'Preferencias Tematicas': 'Tech'}}
-    } 
+        "Participantes": {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}}} 
 ]
 
 
@@ -100,13 +88,6 @@ def verificar_eventos():
         listar_eventos()
         
         
-        
-def casasasas(cpf, evento):
-    if cpf in evento['Participantes']:
-        print('CPF ja cadastrado!!')
-        return True
-    return False
-    
 
 def alteracao_dados_eventos():
     LimparTela()
