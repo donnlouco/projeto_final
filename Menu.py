@@ -59,6 +59,9 @@ def MenuEvento(lista):
         remover_evento()
         
     elif opc == 3:
+        filtragem_tema()
+        
+    elif opc == 4:
         listar_participantes()
         
     return opc

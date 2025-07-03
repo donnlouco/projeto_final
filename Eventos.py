@@ -12,7 +12,8 @@ eventos = [
         "Tema": "Segurança Cibernética",
         "Local": "São Paulo",
         "Participantes": {'07610192198': {'Nome': 'Vinicius henrique de souza lima', 'Email': 'Vinisk8.cba@gmail.com', 'Preferencias Tematicas': 'Tech'}, 
-                          '07610192199': {'Nome': 'Eduardo de Souza lima', 'Email': 'Edusk8.cba@gmail.com', 'Preferencias Tematicas': 'seinao'}}, 
+                          '07610192199': {'Nome': 'Eduardo de Souza lima', 'Email': 'Edusk8.cba@gmail.com', 'Preferencias Tematicas': 'seinao'},
+                          '07610192195': {'Nome': 'Eudes', 'Email': 'Edusk8.cba@gmail.com', 'Preferencias Tematicas': 'seinao'}}, 
         }, 
     {
         "Nome": "Tech Summit",
@@ -41,7 +42,7 @@ eventos = [
 def cadastrar_eventos():
     LimparTela()
     nome_evento = input('Digite o nome do Evento: ')
-    data_evento = data()
+    data_evento = validar_data()
     tema_evento = input('Digite o tema do Evento: ')
     local_evento = input('Digite o local do Evento: ')
     evento = {
@@ -131,22 +132,21 @@ def alteracao_dados_eventos():
 def filtragem_tema():
     LimparTela()
     Cabecalho('Filtragem pelo Tema')
-    evento = [x['Tema'] for x in eventos]
-    print(evento)
-    tema = input('Informe o tema que deseja procurar: ').lower()
+    todos_temas = [x['Tema'] for x in eventos]
+    print(todos_temas)
+    tema = input('Informe o tema que deseja procurar: ')
     
-    encontrado = False
+    evento_filtrado = [x for x in eventos if tema in x['Tema']]#cada x e um evento, entao se o tema aparecer em um evento (x['tema]), ele fica armazenado aq
     
-    for evento in eventos:
-        if tema in evento['Tema'].lower():
-                print('')
-                print(f'Nome: {evento['Nome']}')
-                print(f'Nome: {evento['Data']}')
-                print(f'Nome: {evento['Tema']}')
-                print(f'Nome: {evento['Local']}')
-                print('')
-                encontrado = True
-    if not encontrado:
+    if evento_filtrado: # se tem evento com o tema, roda o arquivo
+        for evento in evento_filtrado:
+            LimparTela()
+            print(f'Nome: {evento['Nome']}')
+            print(f'Nome: {evento['Data']}')
+            print(f'Nome: {evento['Tema']}')
+            print(f'Nome: {evento['Local']}')
+            print('')
+    else:
         print('Tema nao encontrado nos Eventos disponiveis!! ')
         
     sair = input(f'Pressione Enter para voltar...')  
@@ -161,12 +161,12 @@ def filtragem_data():
     print('Escolha a Data final')
     final = data()
     
-    data_min = min(inicio, final)
-    data_max = max(inicio, final)
+    data_min = min(inicio, final)#aqui pega a menor data, dentro dos parametros (inicio, final) garante que mesmo q o usuario inverta as datas
+    data_max = max(inicio, final)#aqui pega a maior data, dentro dos parametros (inicio, final) garante que mesmo q o usuario inverta as datas
     
     evento_filtrado = [x for x in eventos if data_min <= x['Data'] <= data_max]
-    # x representa cada evento da lista, x['Data'] é a chave de ordenação (a data associada ao evento).
-    evento_filtrado = sorted(evento_filtrado, key=lambda x: x['Data'])
+    
+    evento_filtrado = sorted(evento_filtrado, key=lambda x: x['Data'])# x representa cada evento da lista, x['Data'] é a chave de ordenação (a data associada ao evento).
           
     LimparTela()
     if evento_filtrado:

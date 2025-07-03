@@ -156,25 +156,25 @@ def alteracao_dados_participantes():
         print("Nenhum participante cadastrado.")
 
     
-    usuario = cpf()
+    usuario = cpf()#chave de acesso dos participantes
     LimparTela()
-    if usuario in evento["Participantes"]:
-        pessoas = evento["Participantes"][usuario]
+    if usuario in evento["Participantes"]: #se a chave esta nos participantes do evento selecionado
+        pessoa = evento["Participantes"][usuario] #entao nos atribuimos essa chave a variavel = pessoa
         
-        for chaves, dados in pessoas.items():
+        for chaves, dados in pessoa.items():
             print(f'{chaves}: {dados}')
             
         alterar = input(f'Qual dado deseja alterar? (Nome / Email / Preferencias Tematicas): ').upper()
         
         LimparTela()
         if alterar == 'NOME':
-            pessoas['Nome'] = input('Digite o novo Nome: ')
+            pessoa['Nome'] = input('Digite o novo Nome: ')
             print('Dados alterados com sucesso!! ')
         elif alterar == 'EMAIL':
-            pessoas['Email'] = input('Digite o novo Email: ')
+            pessoa['Email'] = input('Digite o novo Email: ')
             print('Dados alterados com sucesso!! ')
         elif alterar == 'PREFERENCIAS TEMATICAS':
-            pessoas['Preferencias Tematicas'] = input('Digite uma nova preferencia: ')
+            pessoa['Preferencias Tematicas'] = input('Digite uma nova preferencia: ')
             print('Dados alterados com sucesso!! ')
         else:
             print('Opcao invalida. ')
