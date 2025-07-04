@@ -46,7 +46,7 @@ def possivel_cancelamento():
     LimparTela()
     Cabecalho('Eventos com menos de 2 participantes')
     
-    lista = [x for x in eventos if len(x['Participantes']) < 2]# faz um compreensao de lista que nos informa se um evento(x) tem menos de 2 participantes (len(x['Participantes']))
+    lista = [evento for evento in eventos if len(evento['Participantes']) < 2]# faz um compreensao de lista que nos informa se um evento(x) tem menos de 2 participantes (len(x['Participantes']))
     
     if lista:# se tem valor(evento) na lista, nos printamos cada evento, informando as informacoes
         for nome in lista:
@@ -61,7 +61,7 @@ def media_participantes_evento():
     LimparTela()
     Cabecalho('Media de participantes por evento')
     
-    pessoas = [len(x['Participantes']) for x in eventos]# aqui nos listamos a quantidade de pessoas em cada evento em uma lista
+    pessoas = [len(evento['Participantes']) for evento in eventos]# aqui nos listamos a quantidade de pessoas em cada evento em uma lista
     
     media = sum(pessoas) / len(eventos) # fazemos a soma de pessoas da lista e dividimos pela quantidade de eventos
     
@@ -76,7 +76,7 @@ def filtragem_tema():
     print(todos_temas)
     tema = input('Informe o tema que deseja procurar: ').lower()
     
-    evento_filtrado = [x for x in eventos if tema in x['Tema'].lower()]# cada x e um evento, entao se o tema aparecer em um evento (x['tema]), ele fica armazenado aq
+    evento_filtrado = [evento for evento in eventos if tema in evento['Tema'].lower()]# cada x e um evento, entao se o tema aparecer em um evento (x['tema]), ele fica armazenado aq
     
     LimparTela()
     if evento_filtrado: # se tem evento com o tema, roda o arquivo
@@ -103,7 +103,7 @@ def filtragem_data():
     data_min = min(inicio, final)# aqui pega a menor data, dentro dos parametros (inicio, final) garante que mesmo q o usuario inverta as datas
     data_max = max(inicio, final)# aqui pega a maior data, dentro dos parametros (inicio, final) garante que mesmo q o usuario inverta as datas
     
-    evento_filtrado = [x for x in eventos if data_min <= x['Data'] <= data_max]
+    evento_filtrado = [evento for evento in eventos if data_min <= evento['Data'] <= data_max]
     
     evento_filtrado = sorted(evento_filtrado, key=lambda x: x['Data'])# x representa cada evento da lista, x['Data'] é a chave de ordenação (a data associada ao evento).
           
