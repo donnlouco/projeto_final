@@ -37,7 +37,7 @@ def temas_mais_frequentes():
     temas_ativos = Counter(temas).most_common() # aqui estamos contando os temas
     
     for nome, qntd in temas_ativos:# apenas printando os temas, com nome do tema e quantidade
-        print(f'{nome}, {qntd}')
+        print(f'{nome}, {qntd} eventos')
     sair = input(f'Pressione Enter para voltar...')
         
 
@@ -116,3 +116,6 @@ def filtragem_data():
         print(f'Nao temos Eventos nessa faixa de Datas!! ')
         
     sair = input(f'Pressione Enter para voltar...')  
+
+
+

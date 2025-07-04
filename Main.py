@@ -7,7 +7,7 @@ from Estatisticas import *
 while True:
     resposta = MenuPrincipal(['Participantes', 'Evento', 'Estatisticas', 'Sair'])
     if resposta == 0:
-        MenuParticipantes(['Cadastro', 'Atualizacao do cadastro', 'Remocao de participantes', 'Busca de participantes por CPF', 'Voltar'])
+        MenuParticipantes(['Cadastro', 'Atualizacao do cadastro', 'Remocao de participantes', 'Eventos que um participante esta inscrito', 'Busca de participantes por CPF', 'Voltar'])
     elif resposta == 1:
         MenuEvento(['Cadastro de Eventos', 'Alteracao de eventos', 'Remocao de eventos','Listagem de participantes por evento', 'Voltar'])
     elif resposta == 2:

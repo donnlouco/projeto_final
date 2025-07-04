@@ -170,3 +170,23 @@ def alteracao_dados_participantes():
         print('CPF nao encontrado... ') # mensagem caso o CPF não esteja cadastrado no evento
         
     sair = input(f'Pressione Enter para voltar...')
+    
+    
+def participante_eventos():
+    LimparTela()
+    Cabecalho(f'Listar eventos que um participante esta inscrito')
+    pessoa = cpf() # # chave de acesso dos participantes
+    
+    filtro_evento = [evento for evento in eventos if pessoa in evento['Participantes']] # selecionamos o evento caso o a variavel (pessoa) esteja nela (evento['Participantes'])
+
+    LimparTela()
+    if filtro_evento: # se tem a pessoa no evento, nos iremos printar
+        nome_participante = filtro_evento[0]['Participantes'][pessoa]['Nome'] # definimos o nome do participante em uma variavel para printar bonitinho
+        # pois fui tentar printar direto no cabecalho e nao DEU
+        Cabecalho(f'Eventos que o participante {nome_participante} esta inscrito')
+        for evento in filtro_evento: # aqui fazemos um loop para printar cada evento filtrado
+            print(f'Nome: {evento['Nome']}, Data: {evento['Data']}, Tema: {evento['Tema']}, Local: {evento['Local']}')
+    else: # se nao tem o participante nos eventos, nos informamos que nao tem o participante
+        print(f'Nao foi encontrado o participante')
+    sair = input(f'Pressione Enter para voltar...')
+        

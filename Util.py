@@ -7,13 +7,13 @@ def LimparTela():
     os.system('cls') #para limpar a tela
 
 
-def Linha(tam = 60): #faz uma linha
+def Linha(tam = 80): #faz uma linha
     return '-' * tam
 
 
 def Cabecalho(txt):
     print(Linha())
-    print(txt.center(60))#centraliza e recebe um texto
+    print(txt.center(80))#centraliza e recebe um texto
     print(Linha())
     
 

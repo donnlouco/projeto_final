@@ -36,6 +36,9 @@ def MenuParticipantes(lista):
         remover_participantes()
         
     elif opc == 3:
+        participante_eventos()
+        
+    elif opc == 4:
         busca_por_cpf()
         
     return opc
