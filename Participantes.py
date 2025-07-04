@@ -147,25 +147,26 @@ def alteracao_dados_participantes():
     if usuario in evento["Participantes"]: # verifica se o CPF está na lista de participantes
         pessoa = evento["Participantes"][usuario] # entao nos atribuimos essa chave a variavel = pessoa
         
-        for chaves, dados in pessoa.items():
+        for chaves, dados in pessoa.items(): # mostra os dados atuais do participante
             print(f'{chaves}: {dados}')
             
+        # pergunta ao usuário qual campo deseja alterar   
         alterar = input(f'Qual dado deseja alterar? (Nome / Email / Preferencias Tematicas): ').upper()
         
         LimparTela()
-        if alterar == 'NOME':
+        if alterar == 'NOME': # se o usuário quiser alterar o nome
             pessoa['Nome'] = input('Digite o novo Nome: ')
             print('Dados alterados com sucesso!! ')
-        elif alterar == 'EMAIL':
+        elif alterar == 'EMAIL': # se o usuário quiser alterar o e-mail
             pessoa['Email'] = input('Digite o novo Email: ')
             print('Dados alterados com sucesso!! ')
-        elif alterar == 'PREFERENCIAS TEMATICAS':
+        elif alterar == 'PREFERENCIAS TEMATICAS': # se quiser alterar as preferência
             pessoa['Preferencias Tematicas'] = input('Digite uma nova preferencia: ')
             print('Dados alterados com sucesso!! ')
-        else:
-            print('Opcao invalida. ')
+        else: 
+            print('Opcao invalida. ') # caso o usuário digite algo que não seja esperado
     else:
         LimparTela()
-        print('CPF nao encontrado... ') # Mensagem caso o CPF não esteja cadastrado no evento
+        print('CPF nao encontrado... ') # mensagem caso o CPF não esteja cadastrado no evento
         
     sair = input(f'Pressione Enter para voltar...')
