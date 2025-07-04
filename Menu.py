@@ -9,7 +9,7 @@ def MenuPrincipal(lista):
     LimparTela()
     Cabecalho('Menu de Navegacao')
     
-    for indice, nome in enumerate(lista): #mostramos cada indice e o nome da lista de string
+    for indice, nome in enumerate(lista): # mostramos cada indice e o nome da lista de string
         print(f'{indice} - {nome}', flush=True)
         sleep(0.1)
         
@@ -21,7 +21,7 @@ def MenuParticipantes(lista):
     LimparTela()
     Cabecalho('Menu dos Participantes')
     
-    for indice, nome in enumerate(lista): #mostramos cada indice e o nome da lista de string
+    for indice, nome in enumerate(lista): # mostramos cada indice e o nome da lista de string
         print(f'{indice} - {nome}', flush=True)
         sleep(0.1)
         
@@ -45,7 +45,7 @@ def MenuEvento(lista):
     LimparTela()
     Cabecalho('Menu de Eventos')
     
-    for indice, nome in enumerate(lista): #mostramos cada indice e o nome da lista de string
+    for indice, nome in enumerate(lista): # mostramos cada indice e o nome da lista de string
         print(f'{indice} - {nome}', flush=True)
         sleep(0.1)
         
@@ -71,11 +71,11 @@ def MenuEstatisticas(lista):
     LimparTela()
     Cabecalho('Estatisticas')
     
-    for indice, nome in enumerate(lista): #mostramos cada indice e o nome da lista de string
+    for indice, nome in enumerate(lista): # mostramos cada indice e o nome da lista de string
         print(f'{indice} - {nome}', flush=True)
         sleep(0.1)
         
-    opc = lerOpcao(len(lista) - 1) #recebemos a entrada do usuario para
+    opc = lerOpcao(len(lista) - 1) # recebemos a entrada do usuario para
     if opc == 0: 
         media_participantes_evento()
         

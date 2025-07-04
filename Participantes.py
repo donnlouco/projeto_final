@@ -7,7 +7,7 @@ from random import randint
 from faker import Faker
 
 def cpf():
-    while True:#um loop para o usuario ficar ate a ser concedido o acesso
+    while True:# um loop para o usuario ficar ate a ser concedido o acesso
         cpf = input('Digite o CPF do participante (APENAS NUMEROS): ')
         # isdigit() verifica se os dados da string sao apenas numeros(0-9), sem espacos ou -
         if cpf.isdigit() and len(cpf) == 11:
@@ -18,43 +18,46 @@ def cpf():
 
 def cadastrar_participantes():
     LimparTela()
-    verificar_eventos()#verifica se tem eventos cadastrados e caso tennha os eventos, ele printa os eventos para facil compreensao do usuario
-    opcao = lerOpcao(len(eventos)-1)#o usuario ira escolher o indice que ele deseja
-    evento = eventos[opcao]#essa variavel agora e o indice do Evento
+    verificar_eventos()# verifica se tem eventos cadastrados e caso tennha os eventos, ele printa os eventos para facil compreensao do usuario
+    opcao = lerOpcao(len(eventos)-1)# o usuario ira escolher o indice que ele deseja
+    evento = eventos[opcao]# essa variavel agora tem o indice do evento
     
     LimparTela()
-    Cabecalho(f'Cadastrar participantes no Evento: {evento['Nome']}') #mostra 
-    while True:
-        cpf_valor = cpf()
-        if verificar_cpf(cpf_valor, evento):
+    Cabecalho(f'Cadastrar participantes no Evento: {evento['Nome']}')
+    while True: # fazemos um loop para adicionar o participante
+        cpf_valor = cpf() # chama a funcao cpf e armazena na variavel
+        if verificar_cpf(cpf_valor, evento): # verifica se ja tem o cpf digitado, se tiver o cpf,
+            # a funcao retorna true e o (continue) faz o código voltar para o início do while, ou seja, pede outro CPF.
             continue
+        # se o CPF não estiver cadastrado, o resultado é false, então o else é executado
         else:
-            nome = input('Digite o NOME COMPLETO do participante: ')
-            email = input('Digite o E-MAIL do participante: ')
-            preferencias = input('Digite os temas preferidos: ')
-            preferencias = ('Tech tech')
+            nome = input('Digite o NOME COMPLETO do participante: ') # nome para o participante
+            email = input('Digite o E-MAIL do participante: ') # email para o participante
+            preferencias = input('Digite os temas preferidos: ')  # Pede as preferências temáticas
             print(f'Os dados foram aceitos ')
-            evento["Participantes"][cpf_valor] = {'Nome': nome, 'Email': email, 'Preferencias Tematicas': preferencias}
-            saida = input('Digite 0 se deseja parar de cadastrar: ')       
-            if saida == '0':
+            evento["Participantes"][cpf_valor] = {'Nome': nome, 'Email': email, 'Preferencias Tematicas': preferencias} # Adiciona o participante ao dicionário do evento
+            saida = input('Digite 0 se deseja parar de cadastrar: ') # Pergunta se deseja parar      
+            if saida == '0': # Se digitar 0, encerra o loop
                 break
         
         
 def listar_participantes():
     LimparTela()
     Cabecalho('Lista de participantes')
-    verificar_eventos()
-    opcao = lerOpcao(len(eventos)-1)
-    evento = eventos[opcao]
+    verificar_eventos()# verifica se tem eventos cadastrados e caso tennha os eventos, ele printa os eventos para facil compreensao do usuario
+    opcao = lerOpcao(len(eventos)-1)# o usuario ira escolher o indice que ele deseja
+    evento = eventos[opcao]# essa variavel agora tem o indice do evento
     
     LimparTela()   
     Cabecalho(f'Participantes do Evento: {evento['Nome']}')
     
-    if not evento["Participantes"]:
+    if not evento["Participantes"]:# se nao tem participantes no evento, ele informa que nao tem participantes
         LimparTela()
         print("Nenhum participante cadastrado.")
+        sair = input(f'Pressione Enter para voltar...')
+        return
 
-    for i, pessoas in evento['Participantes'].items():
+    for i, pessoas in evento['Participantes'].items():# fazemos um lopp para mostrar todos os participantes dentro do evento selecionado
         print(f"CPF: {i} . Nome: {pessoas['Nome']} | Email: {pessoas['Email']} | | Preferencias tematicas: {pessoas['Preferencias Tematicas']}")
     sair = input(f'Pressione Enter para voltar...')
 
@@ -62,88 +65,73 @@ def listar_participantes():
 def remover_participantes ():
     LimparTela()
     Cabecalho('Remocao de Participantes')
-    verificar_eventos()
-    opcao = lerOpcao(len(eventos)-1)
-    evento = eventos[opcao]
+    verificar_eventos()# verifica se tem eventos cadastrados e caso tennha os eventos, ele printa os eventos para facil compreensao do usuario
+    opcao = lerOpcao(len(eventos)-1)# o usuario ira escolher o indice que ele deseja
+    evento = eventos[opcao]# essa variavel agora tem o indice do evento
     
     LimparTela()
     Cabecalho(f'Remover Participante do Evento: {evento['Nome']}')
     
-    if not evento["Participantes"]:
+    if not evento["Participantes"]:# se nao tem participantes no evento, ele informa que nao tem participantes
         LimparTela()
         print("Nenhum participante cadastrado.")
+        sair = input(f'Pressione Enter para voltar...')
+        return
         
-    usuario = cpf()
-    if usuario in evento["Participantes"]:
-        print(f'Participante {evento['Participantes'][usuario]["Nome"]} deletado com SUCESSO!!')
-        del evento['Participantes'][usuario]
-    else:
+    usuario = cpf() # chama a funcao cpf e armazena na variavel usuario
+    if usuario in evento["Participantes"]: #s e a chave(usuario(cpf)) esta nos participantes do evento
+        print(f'Participante {evento['Participantes'][usuario]["Nome"]} deletado com SUCESSO!!') # informa que o usuario foi removido
+        del evento['Participantes'][usuario] #remove o usuario
+    else: # se nao tem o usuario(cpf) no evento escolhido
         print('Nao tem Participante com esse CPF')
     sair = input(f'Pressione Enter para voltar...')
 
     
     
 def verificar_cpf(cpf, evento):
-    if cpf in evento['Participantes']:
+    if cpf in evento['Participantes']: # Verifica se o CPF já existe no dicionário de participantes do evento
         print('CPF ja cadastrado!!')
-        return True
-    return False
+        return True # Retorna True, indicando que o CPF já está cadastrado
+    return False # Se o CPF não estiver cadastrado, retorna False
     
 
 
 def busca_por_cpf():
     LimparTela()
     Cabecalho('Busca pelo CPF')
-    verificar_eventos()
-    opcao = lerOpcao(len(eventos)-1)
-    evento = eventos[opcao]
+    verificar_eventos() # mostra a lista de eventos disponíveis (para o usuário escolher)
+    opcao = lerOpcao(len(eventos)-1) # ve a opção do usuário, que deve ser um índice válido na lista de eventos
+    evento = eventos[opcao] # seleciona o evento escolhido pelo usuário
     
     LimparTela()    
     Cabecalho(f'Participantes do Evento: {evento['Nome']}')
     
-    if not evento["Participantes"]:
+    if not evento["Participantes"]: #verifica se tem participante dentro do evento
         LimparTela()
         print("Nenhum participante cadastrado.")
+        sair = input(f'Pressione Enter para voltar...')
+        return
     
-    usuario = cpf()
-    if usuario in evento["Participantes"]:
-        pessoas = evento["Participantes"][usuario]
+    usuario = cpf() # pede o CPF que o usuário deseja buscar
+    if usuario in evento["Participantes"]: # verifica se o CPF está na lista de participantes
+        pessoas = evento["Participantes"][usuario] # entao nos atribuimos essa chave a variavel = pessoa
         LimparTela()
         print(f'CPF: {usuario}')
         print(f'Nome: {pessoas['Nome']}')
         print(f'Email: {pessoas['Email']}')
         print(f'Preferencias tematicas: {pessoas['Preferencias Tematicas']}')
     else:
-        print('CPF nao encontrado... ')
+        print('CPF nao encontrado... ') # Mensagem caso o CPF não esteja cadastrado no evento
 
     sair = input(f'Pressione Enter para voltar...')
-
-
-def cpf_aleatorio():
-    a = [str(randint(0, 9)) for _ in range(11)]
-    cpf = ''.join(a)
-    return cpf
-
-
-def nome_aleatorio():
-    fake = Faker()
-    nome_al = fake.name()
-    return nome_al
-
-
-def email_aleatorio():
-    fake = Faker()
-    nome_al = 'x'
-    email_al = '@gmail.com'.join(nome_al)
-    return email_al
 
 
 def alteracao_dados_participantes():
     LimparTela()
     Cabecalho('Alteracao de Dados')
-    verificar_eventos()
-    opcao = lerOpcao(len(eventos)-1)
-    evento = eventos[opcao]
+    verificar_eventos() # mostra a lista de eventos disponíveis (para o usuário escolher)
+    opcao = lerOpcao(len(eventos)-1) # ve a opção do usuário, que deve ser um índice válido na lista de eventos
+    evento = eventos[opcao] # seleciona o evento escolhido pelo usuário
     
     LimparTela()    
     Cabecalho(f'Participantes do Evento: {evento['Nome']}')
@@ -151,12 +139,13 @@ def alteracao_dados_participantes():
     if not evento["Participantes"]:
         LimparTela()
         print("Nenhum participante cadastrado.")
+        sair = input(f'Pressione Enter para voltar...')
+        return
 
-    
-    usuario = cpf()#chave de acesso dos participantes
+    usuario = cpf()# chave de acesso dos participantes
     LimparTela()
-    if usuario in evento["Participantes"]: #se a chave esta nos participantes do evento selecionado
-        pessoa = evento["Participantes"][usuario] #entao nos atribuimos essa chave a variavel = pessoa
+    if usuario in evento["Participantes"]: # verifica se o CPF está na lista de participantes
+        pessoa = evento["Participantes"][usuario] # entao nos atribuimos essa chave a variavel = pessoa
         
         for chaves, dados in pessoa.items():
             print(f'{chaves}: {dados}')
@@ -177,6 +166,6 @@ def alteracao_dados_participantes():
             print('Opcao invalida. ')
     else:
         LimparTela()
-        print('CPF nao encontrado... ')
+        print('CPF nao encontrado... ') # Mensagem caso o CPF não esteja cadastrado no evento
         
     sair = input(f'Pressione Enter para voltar...')
