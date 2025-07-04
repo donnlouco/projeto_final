@@ -4,7 +4,6 @@ from Util import *
 from testes import eve
 from testes import listar_eve
 from random import randint
-from faker import Faker
 
 def cpf():
     while True:# um loop para o usuario ficar ate a ser concedido o acesso

@@ -22,7 +22,7 @@ def participantes_mais_ativos():
     
     if filtragem: # se tem filtragem, fazemos um (for) rodando eles e printando a quantidade e o nome
         for nome, qntd in filtragem:
-            print(f'-- {nome}, Quantidade: {qntd}')
+            print(f'-- {nome}, Quantidade: {qntd} eventos')
     else: # se nao tem pessoas na filtragem, retornamos o print
         print(f'Nao tem participantes com o valor minimo de {valor}')
     sair = input(f'Pressione Enter para voltar...')
