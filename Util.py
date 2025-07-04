@@ -4,28 +4,30 @@ from datetime import date
 
 
 def LimparTela():
-    os.system('cls')
+    os.system('cls') #para limpar a tela
 
 
-def Linha(tam = 60):
+def Linha(tam = 60): #faz uma linha
     return '-' * tam
 
 
 def Cabecalho(txt):
     print(Linha())
-    print(txt.center(60))
+    print(txt.center(60))#centraliza e recebe um texto
     print(Linha())
     
 
 def lerOpcao(lim_sup):
-    while True:
-        try:
-            op = int(input('Digite um numero: '))
-            if op >= 0 and op <= lim_sup:
-                return op
+    while True: #fazemos um loop que nao deixa o usuario sair ate ele digitar o que esperamos
+        try: # Se o usuário digitar algo como "abc" ou "5.2", isso vai gerar um erro — e o except será acionado.
+            valor = int(input('Digite um numero: ')) #recebemos o valor do usuario
+            # se o valor for maior ou igual a 0(entao ele nao aceita numeros negativos) e se o valor for menor ou igual com o limite do parametro que escolhemos
+            if valor >= 0 and valor <= lim_sup: 
+                return valor# se as condicoes forem aceitas ele retorna valor
             else:
                 print('\033[31mVoce nao digitou uma opcao valida, tente novamente \033[m') 
-        except(ValueError, IndexError):
+        except(ValueError, IndexError): # Se o usuario digitar uma letra, ou caracteres ira dar (valueerror), com expect o programa nao quebra
+            #indexerror sera para acessarmos as listas, como a de eventos
             print('\033[31mVoce nao digitou um numero, tente novamente com um NUMERO INTEIRO \033[m')
             
 

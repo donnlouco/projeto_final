@@ -42,9 +42,10 @@ eventos = [
 def cadastrar_eventos():
     LimparTela()
     nome_evento = input('Digite o nome do Evento: ')
-    data_evento = validar_data()
+    data_evento = validar_data() #aqui temos um funcao de data, na qual verificamos se o usuario esta tentando colocar uma data antiga
     tema_evento = input('Digite o tema do Evento: ')
     local_evento = input('Digite o local do Evento: ')
+    #armazenamos todos os dados que o usuario digitou em um dicionario (evento) e depois colocamos esse dicinario na lista EVENTOS
     evento = {
         'Nome': nome_evento,
         'Data': data_evento,
@@ -61,11 +62,11 @@ def cadastrar_eventos():
 def remover_evento():
     LimparTela()
     Cabecalho('Remover Evento')
-    verificar_eventos()
-    opcao = lerOpcao(len(eventos)-1)
-    evento = eventos[opcao]
+    verificar_eventos()#verifica se tem eventos cadastrados e caso tennha os eventos, ele printa os eventos para facil compreensao do usuario
+    opcao = lerOpcao(len(eventos)-1) #o usuario ira escolher o indice que ele deseja
+    evento = eventos[opcao] #essa variavel agora e o indice do Evento
     print(f'Evento {evento['Nome']} REMOVIDO com sucesso !!!')
-    del evento
+    del evento #exclui o evento
     sair = input(f'Pressione Enter para voltar...')
 
     
@@ -76,18 +77,18 @@ def listar_eventos():
         
         
 def printar_eventos():
-    for i, evento in enumerate(eventos):
+    for i, evento in enumerate(eventos): #printa todos evento informando seus indices
                 print(f"{i} - {evento['Nome']} | Data: {evento['Data']} | Tema: {evento['Tema']} | Local: {evento['Local']} | Participantes: {len(evento['Participantes'])}")
     sair = input(f'Digite algo para voltar: ')
 
       
 def verificar_eventos():
-    if not eventos:
-        print('Nao tem Eventos cadastrados, Cadastre 1 evento: ', flush=True)
+    if not eventos:#se nao tem nenhum evento, ele chama a funcao para cadastar
+        print('Nao tem Eventos cadastrados, Cadastre 1 evento: ', flush=True) #precisa do flush=True para ter o sleep
         sleep(5)
         cadastrar_eventos()
         listar_eventos()
-    else:
+    else: # se tem evento, ele mostra os eventos com indices
         listar_eventos()
         
         
@@ -95,12 +96,12 @@ def verificar_eventos():
 def alteracao_dados_eventos():
     LimparTela()
     Cabecalho('Alteracao de Dados')
-    verificar_eventos()
-    opcao = lerOpcao(len(eventos)-1)
-    evento = eventos[opcao]
+    verificar_eventos()#para mostrar os eventos com indice
+    opcao = lerOpcao(len(eventos)-1)#o usuario ira escolher o indice que ele deseja
+    evento = eventos[opcao] #essa variavel agora e o indice do Evento
     
     LimparTela()    
-    Cabecalho(f'Alteracoes do Evento: {evento['Nome']}')
+    Cabecalho(f'Alteracoes do Evento: {evento['Nome']}') #nome do evento e em seguida mostramos os as chaves e valores do evento(menos participantes)
     
     print(f'Nome : {evento['Nome']}')
     print(f'Data : {evento['Data']}')
@@ -110,16 +111,16 @@ def alteracao_dados_eventos():
     alterar = input(f'Qual dado deseja alterar? (Nome / Data / Tema / Local): ').upper()
     
     LimparTela()
-    if alterar == 'NOME':
+    if alterar == 'NOME': #se for nome, ele ira alterar o nome do evento
         evento['Nome'] = input('Digite o novo Nome do evento: ')
         print('Dados Alterados com sucesso')
-    elif alterar == 'DATA':
-        evento['Data'] = input('Digite a nova Data do evento: ')
+    elif alterar == 'DATA': #se for data, ele ira alterar a data do evento
+        evento['Data'] = validar_data()
         print('Dados Alterados com sucesso')
-    elif alterar == 'TEMA':
+    elif alterar == 'TEMA': #se for tema, ele ira alterar o tema do evento
         evento['Tema'] = input('Digite o novo Tema do evento: ')
         print('Dados Alterados com sucesso')
-    elif alterar == 'LOCAL':
+    elif alterar == 'LOCAL': #se for nome, ele ira alterar o local do evento
         evento['Local'] = input('Digite o novo Local do evento: ')
         print('Dados Alterados com sucesso')
     else:
@@ -180,6 +181,4 @@ def filtragem_data():
 
 
 
-def possivel_cancelamento():
-    LimparTela()
-    Cabecalho('Eventos com menos de 2 participantes')
+

@@ -1,4 +1,4 @@
-from biblioteca import *
+
 from Menu import *
 from Eventos import *
 from Participantes import *

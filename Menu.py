@@ -9,8 +9,8 @@ def MenuPrincipal(lista):
     LimparTela()
     Cabecalho('Menu de Navegacao')
     
-    for i, item in enumerate(lista):
-        print(f'{i} - {item}', flush=True)
+    for indice, nome in enumerate(lista): #mostramos cada indice e o nome da lista de string
+        print(f'{indice} - {nome}', flush=True)
         sleep(0.1)
         
     opc = lerOpcao(len(lista) - 1)
@@ -21,8 +21,8 @@ def MenuParticipantes(lista):
     LimparTela()
     Cabecalho('Menu dos Participantes')
     
-    for i, item in enumerate(lista):
-        print(f'{i} - {item}', flush=True)
+    for indice, nome in enumerate(lista): #mostramos cada indice e o nome da lista de string
+        print(f'{indice} - {nome}', flush=True)
         sleep(0.1)
         
     opc = lerOpcao(len(lista) - 1)
@@ -45,8 +45,8 @@ def MenuEvento(lista):
     LimparTela()
     Cabecalho('Menu de Eventos')
     
-    for i, item in enumerate(lista):
-        print(f'{i} - {item}', flush=True)
+    for indice, nome in enumerate(lista): #mostramos cada indice e o nome da lista de string
+        print(f'{indice} - {nome}', flush=True)
         sleep(0.1)
         
     opc = lerOpcao(len(lista) - 1)
@@ -71,13 +71,14 @@ def MenuEstatisticas(lista):
     LimparTela()
     Cabecalho('Estatisticas')
     
-    for i, item in enumerate(lista):
-        print(f'{i} - {item}', flush=True)
+    for indice, nome in enumerate(lista): #mostramos cada indice e o nome da lista de string
+        print(f'{indice} - {nome}', flush=True)
         sleep(0.1)
         
-    opc = lerOpcao(len(lista) - 1)
-    if opc == 0:
-        pass
+    opc = lerOpcao(len(lista) - 1) #recebemos a entrada do usuario para
+    if opc == 0: 
+        media_participantes_evento()
+        
     elif opc == 1:
         temas_mais_frequentes()
         
@@ -85,6 +86,6 @@ def MenuEstatisticas(lista):
         participantes_mais_ativos()
         
     elif opc == 3:
-        listar_participantes()
+        possivel_cancelamento()
         
     return opc
