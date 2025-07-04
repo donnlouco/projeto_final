@@ -59,9 +59,6 @@ def MenuEvento(lista):
         remover_evento()
         
     elif opc == 3:
-        filtragem_tema()
-        
-    elif opc == 4:
         listar_participantes()
         
     return opc
@@ -86,6 +83,12 @@ def MenuEstatisticas(lista):
         participantes_mais_ativos()
         
     elif opc == 3:
+        filtragem_tema()
+        
+    elif opc == 4:
+        filtragem_data()
+        
+    elif opc == 5:
         possivel_cancelamento()
         
     return opc

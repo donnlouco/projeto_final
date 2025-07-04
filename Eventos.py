@@ -64,9 +64,9 @@ def remover_evento():
     Cabecalho('Remover Evento')
     verificar_eventos()# verifica se tem eventos cadastrados e caso tennha os eventos, ele printa os eventos para facil compreensao do usuario
     opcao = lerOpcao(len(eventos)-1) # o usuario ira escolher o indice que ele deseja
-    evento = eventos[opcao] # essa variavel agora e o indice do Evento
+    evento = eventos[opcao] # armazena temporariamente o evento escolhido
     print(f'Evento {evento['Nome']} REMOVIDO com sucesso !!!')
-    del evento # exclui o evento
+    del eventos[opcao] # remove o evento da lista original
     sair = input(f'Pressione Enter para voltar...')
 
     
@@ -130,54 +130,6 @@ def alteracao_dados_eventos():
     sair = input(f'Pressione Enter para voltar...')    
     
 
-def filtragem_tema():
-    LimparTela()
-    Cabecalho('Filtragem pelo Tema')
-    todos_temas = [x['Tema'] for x in eventos] # printa todos os temas dos eventos
-    print(todos_temas)
-    tema = input('Informe o tema que deseja procurar: ')
-    
-    evento_filtrado = [x for x in eventos if tema in x['Tema']]# cada x e um evento, entao se o tema aparecer em um evento (x['tema]), ele fica armazenado aq
-    
-    if evento_filtrado: # se tem evento com o tema, roda o arquivo
-        for evento in evento_filtrado:
-            LimparTela()
-            print(f'Nome: {evento['Nome']}')
-            print(f'Nome: {evento['Data']}')
-            print(f'Nome: {evento['Tema']}')
-            print(f'Nome: {evento['Local']}')
-            print('')
-    else:
-        print('Tema nao encontrado nos Eventos disponiveis!! ')
-        
-    sair = input(f'Pressione Enter para voltar...')  
-
-
-
-def filtragem_data():
-    LimparTela()
-    Cabecalho('Filtragem por Datas')
-    print('Escolha a Data inicial')
-    inicio = data()
-    print('Escolha a Data final')
-    final = data()
-    
-    data_min = min(inicio, final)# aqui pega a menor data, dentro dos parametros (inicio, final) garante que mesmo q o usuario inverta as datas
-    data_max = max(inicio, final)# aqui pega a maior data, dentro dos parametros (inicio, final) garante que mesmo q o usuario inverta as datas
-    
-    evento_filtrado = [x for x in eventos if data_min <= x['Data'] <= data_max]
-    
-    evento_filtrado = sorted(evento_filtrado, key=lambda x: x['Data'])# x representa cada evento da lista, x['Data'] é a chave de ordenação (a data associada ao evento).
-          
-    LimparTela()
-    if evento_filtrado: # se tem evento dentro das datas informadas
-        for evento in evento_filtrado: # printa os eventos
-            print(f'Nome: {evento['Nome']}, Data: {evento['Data']}, Tema: {evento['Tema']}, Local: {evento['Local']}')    
-
-    else: # se nao tem eventos nessa faixa de datas
-        print(f'Nao temos Eventos nessa faixa de Datas!! ')
-        
-    sair = input(f'Pressione Enter para voltar...') 
 
 
 
