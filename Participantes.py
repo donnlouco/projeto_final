@@ -1,8 +1,6 @@
 from Eventos import *
 from time import sleep
 from Util import *
-from testes import eve
-from testes import listar_eve
 from random import randint
 
 def cpf():
